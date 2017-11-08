@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Book</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Url</th>
+        </tr>
+        <% records.forEach(record => {%>
+            <tr>
+                <td><%= record.RecordId %></td>
+                <td><%= record.Title %></td>
+                <td><% record.Author.forEach(author => { %>
+                    <%= author %><br/>
+                    <% }) %>
+                </td>
+                <td><%= record.PublishYear %></td>
+                <td><% record.BookUrl.forEach(url => { %>
+                    <a href="<%= url %>" target="_blank"><%= url %></a><br/>
+                    <% }) %>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
